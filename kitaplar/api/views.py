@@ -26,7 +26,6 @@ class YorumCreateAPIView(generics.CreateAPIView):
         kitap = get_object_or_404(Kitap, pk=kitap_pk)
         serializer.save(kitap=kitap)
 
-
 class YorumDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Yorum.objects.all()
     serializer_class = YorumSerializer
