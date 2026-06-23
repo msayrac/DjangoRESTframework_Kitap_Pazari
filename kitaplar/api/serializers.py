@@ -17,8 +17,5 @@ class KitapSerializer(serializers.ModelSerializer):
 
 
 
-
-
-
         
 
