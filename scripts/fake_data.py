@@ -35,9 +35,42 @@ def set_user():
     print('Kullanıcı kaydedildi', u_name)
 
 
+import requests
+from pprint import pprint
+from kitaplar.api.serializers import KitapSerializer
 
+def kitap_ekle(konu):
+    fake = Faker(['en_US'])
+    url = 'https://openlibrary.org/dev/docs/api/search.json'
+    payload = {'q':konu}
+    response = requests.get(url, params=payload)
 
+    if response.status_code != 200:
+        print('Hatalı istek yapıldı', response.status_code)
+        return
+    jsn = response.json()
+    kitaplar = jsn.get('docs', [])
 
+    if not kitaplar:
+        print(f'{konu} konusuyla ilgili kitap bulunamadı.')
+        return
+    i=0
+    for kitap in kitaplar:
+        kitap_adi = kitap.get('title')
+        yazar_listesi = kitap.get('author_name')
+        yazar_ismi = yazar_listesi[0] if yazar_listesi else 'Bilinmeyen Yazar'
+        data =dict(
+            isim = kitap_adi,
+            yazar = yazar_ismi,
+            aciklama ='-'.join(kitap.get('text')),
+            yayin_tarihi = fake.date_time_between(start_date='-10y', end_date='now', tzinfo=None),
+        )
+        serializer = KitapSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            print('kitap kaydedildi : ', kitap_adi)
 
-
-
+        else:
+            continue
+        
+        
