@@ -46,6 +46,9 @@ class YorumDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+
+
+
 # # GenericAPIView
 # class KitapListCreateAPIView(ListModelMixin, CreateModelMixin, GenericAPIView):
 #     queryset = Kitap.objects.all()
