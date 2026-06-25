@@ -121,9 +121,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-#     ]
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'kitaplar.api.pagination.SmallPagination',
+    'PAGE_SIZE': 3
+}
+
 
