@@ -1,4 +1,17 @@
+# Django REST Framework - Dive into APIs & Customization
+This repository contains the source code and documentation for the Django REST Framework (DRF) development. Building upon the basic API structure established in the first section, this phase implements relational models, Class-Based Views (CBVs), generic views, mixins, and robust authentication/permission workflows.
+## Key Features & Implementation
+* Class-Based Views (CBVs): Transitioned API views from function-based to `APIView` class-based structures, increasing modularity, reusability, and code readability.
+* Mixins & Generic Views: Integrated DRF’s built-in `mixins` and concrete generic views (e.g., `ListCreateAPIView`, `RetrieveUpdateDestroyAPIView`) to eliminate boilerplate code.
+* Relational Serializers: Implemented relational mappings (Foreign Keys) between models using dynamic approaches like `Nested Serializers` and `PrimaryKeyRelatedField`.
+* Authentication & Permissions: Secured API endpoints using default permission policies like `IsAuthenticated` and `IsAuthenticatedOrReadOnly`.
+* Implemented a Custom Permission class to restrict write access (`PUT`, `PATCH`, `DELETE`) exclusively to the object's creator.
 
+##Tech Stack
+
+* **Python**
+* **Django**
+* **Django REST Framework**
 
 
 
